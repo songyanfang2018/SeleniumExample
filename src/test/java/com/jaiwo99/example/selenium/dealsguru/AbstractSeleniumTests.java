@@ -25,7 +25,7 @@ public abstract class AbstractSeleniumTests {
     }
 
     @After
-    public void saveScreenshotAndCloseBrowser() {
+    public void closeBrowser() {
         driver.quit();
     }
 }

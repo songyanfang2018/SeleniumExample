@@ -15,16 +15,19 @@ public class PageTest extends AbstractSeleniumTests {
     @Test
     public void GoToEbayPageWorks() {
         final List<WebElement> cards = driver.findElements(By.cssSelector(".card"));
-        cards.get(0).click();
-        final WebElement buyButton = driver.findElement(By.cssSelector(".buy-button"));
-        wait.until(ExpectedConditions.elementToBeClickable(buyButton));
-        buyButton.click();
 
-        final List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(browserTabs.get(1));
+        cards.forEach(card -> {
+            card.click();
+            final WebElement buyButton = driver.findElement(By.cssSelector(".buy-button"));
+            wait.until(ExpectedConditions.elementToBeClickable(buyButton));
+            buyButton.click();
 
-        assertThat(driver.getCurrentUrl()).startsWith("https://www.ebay.de");
-        driver.close();
-        driver.switchTo().window(browserTabs.get(0));
+            final List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(browserTabs.get(1));
+
+            assertThat(driver.getCurrentUrl()).startsWith("https://www.ebay.de");
+            driver.close();
+            driver.switchTo().window(browserTabs.get(0));
+        });
     }
 }
