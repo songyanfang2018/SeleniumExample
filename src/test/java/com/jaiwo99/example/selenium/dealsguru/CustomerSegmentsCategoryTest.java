@@ -38,13 +38,19 @@ public class CustomerSegmentsCategoryTest extends AbstractSeleniumTests {
     public void customerSegmentsCategoryWork(){
         System.out.println("Testing index: " + index);
 
-        final List<WebElement> categoryList1 = driver.findElements(By.cssSelector(".customer-segment-box"));
+        final List<WebElement> categoryList1 = driver.findElements(By.cssSelector(".customer-segment-link"));
         if (index >= categoryList1.size()) {
             return;
         }
 
+
         final WebElement category1 = categoryList1.get(index);
-        category1.click();
+
+        final String href = category1.getAttribute("href");
+        System.out.println("Go to href: " + href);
+
+        driver.get(href);
+
         final List<WebElement> categoryList = driver.findElements(By.cssSelector(".nav-item"));
 
         if (index >= categoryList.size()) {
