@@ -24,7 +24,7 @@ public abstract class AbstractSeleniumTests {
         final ChromeOptions options = new ChromeOptions();
 
         // decides if running browser in headless mode
-        //options.addArguments("--headless");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.get(baseUrl);
         wait  = new WebDriverWait(driver, 10);
