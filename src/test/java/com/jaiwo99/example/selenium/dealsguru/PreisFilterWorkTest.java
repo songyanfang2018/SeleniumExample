@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PreisFilterWorkTest extends AbstractSeleniumTests {
     @Test
-    final public void preisFilterKontrollWork() throws Exception {
+    final public void preisFilterWorkTest() throws Exception {
         driver.get(baseUrl);
         final WebElement largeBannerButton = driver.findElement(By.cssSelector(".large-banner"));
         largeBannerButton.click();
