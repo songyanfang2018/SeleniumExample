@@ -9,12 +9,6 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-
-import org.openqa.selenium.By;
-
-import java.text.NumberFormat;
-import java.util.*;
 import java.util.stream.Collectors;
 
 @RunWith(Parameterized.class)
@@ -31,7 +25,7 @@ public class VersandkostenTest extends AbstractSeleniumTests {
     public static Collection<Object[]> data() {
         List<Object[]> result = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             result.add(new Object[]{i});
         }
 
@@ -39,28 +33,49 @@ public class VersandkostenTest extends AbstractSeleniumTests {
     }
 
     @Test
-    public void versandKostenFreiTest() {
+    public void versandKostenFreiTest() throws Exception {
 
-        System.out.println("Testing index: " + index);
+        driver.get(baseUrl);
 
         final WebElement largeBannerButton = driver.findElement(By.cssSelector(".large-banner"));
         largeBannerButton.click();
-        final WebElement filterIconButton = driver.findElement(By.cssSelector("#sticky-filter-control"));
-        filterIconButton.click();
-        final WebElement versandkostenButton = driver.findElement(By.xpath("//input[@id='free-shipping']"));
-        versandkostenButton.click();
-        final WebElement inputClassButton = driver.findElement(By.xpath("//input[@id='submit-filter']"));
-        inputClassButton.click();
-        final List<WebElement> list = driver.findElements(By.cssSelector(".card"));
-        if (index >= list.size()) {
-            return;
+
+        final List<WebElement> categories = driver.findElements(By.cssSelector("li.nav-item a"));
+
+
+        final List<String> urls = categories.stream().map(we -> we.getAttribute("href")).collect(Collectors.toList());
+
+
+        for (String url : urls) {
+
+            final String testUrl = url + "?upper=" + 1 + "&under=" + 20 + "&free_shipping=1";
+            System.out.println("Opening url:" + testUrl);
+            driver.get(testUrl);
+
+            final List<WebElement> list = driver.findElements(By.cssSelector(".card"));
+            if (index >= list.size()) {
+                return;
+            }
+
+            final WebElement card = list.get(index);
+
+            card.click();
+
+            final WebElement itemPrice = driver.findElement(By.xpath("//div[@class='item-info']/span[@class='big-item-info']"));
+
         }
 
-        final WebElement card = list.get(index);
+        //final WebElement filterIconButton = driver.findElement(By.cssSelector("#sticky-filter-control"));
+        //filterIconButton.click();
 
-        card.click();
 
-        final WebElement itemPrice = driver.findElement(By.xpath("//div[@class='item-info']/span[@class='big-item-info']"));
+        // final WebElement versandkostenButton = driver.findElement(By.xpath("//input[@id='free-shipping']"));
+        // versandkostenButton.click();
+
+        //final WebElement inputClassButton = driver.findElement(By.xpath("//input[@id='submit-filter']"));
+        //inputClassButton.click();
+
+
 
 
     }
