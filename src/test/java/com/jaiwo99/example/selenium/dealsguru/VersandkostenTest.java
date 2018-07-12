@@ -61,19 +61,10 @@ public class VersandkostenTest extends AbstractSeleniumTests {
 
             card.click();
 
-            final WebElement itemPrice = driver.findElement(By.xpath("//div[@class='item-info']/span[@class='big-item-info']"));
+            final WebElement  = driver.findElement(By.xpath("//div[@class='mobile-header']/span[@class='big-item-info']"));
 
         }
 
-        //final WebElement filterIconButton = driver.findElement(By.cssSelector("#sticky-filter-control"));
-        //filterIconButton.click();
-
-
-        // final WebElement versandkostenButton = driver.findElement(By.xpath("//input[@id='free-shipping']"));
-        // versandkostenButton.click();
-
-        //final WebElement inputClassButton = driver.findElement(By.xpath("//input[@id='submit-filter']"));
-        //inputClassButton.click();
 
 
 
