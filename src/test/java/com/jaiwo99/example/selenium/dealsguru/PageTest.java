@@ -62,6 +62,8 @@ public class PageTest extends AbstractSeleniumTests {
         driver.switchTo().window(browserTabs.get(0));
     }
 
+
+
     @Test
     public void FotoCheckWorks() {
         System.out.println("Testing index: " + index);

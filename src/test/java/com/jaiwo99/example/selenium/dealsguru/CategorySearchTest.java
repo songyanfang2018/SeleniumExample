@@ -19,6 +19,7 @@ public class CategorySearchTest extends AbstractSeleniumTests {
 
     private int index;
 
+
     public CategorySearchTest(int index) {
         this.index = index;
     }
@@ -34,6 +35,7 @@ public class CategorySearchTest extends AbstractSeleniumTests {
         return result;
     }
 
+
     @Test
     public void categoryWork() {
         System.out.println("Testing index: " + index);
@@ -47,6 +49,13 @@ public class CategorySearchTest extends AbstractSeleniumTests {
 
         final WebElement category = categoryList.get(index);
         category.click();
+        final List<WebElement> subCategoryList =driver.findElements(By.cssSelector(".nav-link"));
+        if (index >= subCategoryList.size()) {
+            return;
+        }
+
+        final WebElement subcategory =categoryList.get(index);
+        subcategory.click();
         final List<WebElement> cards = driver.findElements(By.cssSelector(".card"));
         wait.until(ExpectedConditions.visibilityOfAllElements(cards));
 

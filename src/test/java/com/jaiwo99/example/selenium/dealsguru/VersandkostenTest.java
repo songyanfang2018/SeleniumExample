@@ -61,7 +61,7 @@ public class VersandkostenTest extends AbstractSeleniumTests {
 
             card.click();
 
-            final WebElement  = driver.findElement(By.xpath("//div[@class='mobile-header']/span[@class='big-item-info']"));
+            final WebElement itemInfoPreis = driver.findElement(By.cssSelector("//div[@class='mobile-header']/span[@class='big-item-info']"));
 
         }
 
