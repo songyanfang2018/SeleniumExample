@@ -1,6 +1,5 @@
 package song.selenium.catchtestwork;
 
-import song.selenium.catchtestwork.ScreenshotHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +16,7 @@ public class AbstractSeleniumTest {
 
     @Before
     public void openBrowser() {
-        baseUrl = "https://ketchup:mayonnaise@catch-dev.i-ways-network.org";
+        baseUrl = "https://catch.app/";
         //baseUrl = System.getProperty("base.url");
         final ChromeOptions options = new ChromeOptions();
 
