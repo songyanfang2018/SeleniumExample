@@ -58,6 +58,10 @@ public class CustomerSegmentsCategoryTest extends AbstractSeleniumTests {
         }
         final WebElement category = categoryList.get(index);
         category.click();
+
+
+
+
         final List<WebElement> cards = driver.findElements(By.cssSelector(".card"));
         wait.until(ExpectedConditions.visibilityOfAllElements(cards));
 
