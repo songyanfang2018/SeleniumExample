@@ -1,4 +1,4 @@
-package song.selenium.catchtestwork;
+package song.selenium.devcatch;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,10 +13,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 @RunWith(Parameterized.class)
 
-public class CategoryTest extends AbstractSeleniumTest{
+public class CategoryTest extends AbstractSeleniumDevTest {
     private int index;
 
 
@@ -40,29 +39,15 @@ public class CategoryTest extends AbstractSeleniumTest{
     @Test
 
     public void CategoryTest(){
-        //System.out.println("Testing index: " + category.findElement(By.cssSelector(".category-name")));
 
-    final List<WebElement> categoryList = driver.findElements(By.cssSelector(".nav-item"));
+
+        final List<WebElement> categoryList = driver.findElements(By.cssSelector(".nav-item"));
         if (index >= categoryList.size()) {
-        return;
-    }
+            return;
+        }
 
         final WebElement category = categoryList.get(index);
         category.click();
-
-        final List<WebElement> categoryList3 = driver.findElements(By.cssSelector(".nav-item has-children"));
-
-        if (index >= categoryList.size()) {
-            return;
-        }
-
-        final WebElement category3 = categoryList3.get(index);
-        category3.click();
-
-        final List<WebElement> categoryList2 = driver.findElements(By.cssSelector(".nav-link"));
-        if (index >= categoryList2.size()) {
-            return;
-        }
 
         final List<WebElement> cards = driver.findElements(By.cssSelector(".card"));
         wait.until(ExpectedConditions.visibilityOfAllElements(cards));
