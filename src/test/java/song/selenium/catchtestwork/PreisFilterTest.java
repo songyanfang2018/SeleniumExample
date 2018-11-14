@@ -8,7 +8,7 @@ import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class PreisFilterTest extends CategoryTest{
+public class PreisFilterTest extends AbstractSeleniumTest{
 
     @Test
     final public void preisFilterWorkTest() throws Exception {
