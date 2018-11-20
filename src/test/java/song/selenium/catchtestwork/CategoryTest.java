@@ -50,19 +50,24 @@ public class CategoryTest extends AbstractSeleniumTest{
         final WebElement category = categoryList.get(index);
         category.click();
 
-        final List<WebElement> categoryList3 = driver.findElements(By.cssSelector(".nav-item has-children"));
 
-        if (index >= categoryList.size()) {
-            return;
-        }
+        //final List<WebElement> categoryList3 = driver.findElements(By.cssSelector(".nav-item has-children"));
 
-        final WebElement category3 = categoryList3.get(index);
-        category3.click();
+        //if (index >= categoryList.size()) {
+        //    return;
+        //}
 
-        final List<WebElement> categoryList2 = driver.findElements(By.cssSelector(".nav-link"));
-        if (index >= categoryList2.size()) {
-            return;
-        }
+       // final WebElement category3 = categoryList3.get(index);
+        //category3.click();
+
+
+        //final List<WebElement> categoryList2 = driver.findElements(By.cssSelector(".nav-link"));
+        //if (index >= categoryList2.size()) {
+         //   return;
+        //}
+
+        final List<WebElement> cards = driver.findElements(By.cssSelector(".card"));
+        wait.until(ExpectedConditions.visibilityOfAllElements(cards));
 
         final List<WebElement> cards = driver.findElements(By.cssSelector(".card"));
         wait.until(ExpectedConditions.visibilityOfAllElements(cards));
